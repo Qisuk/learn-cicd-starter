@@ -17,6 +17,7 @@ func TestGetAPIKey(t *testing.T) {
 		expectedError error
 	}{
 		{
+
 			name: "valid API key",
 			headers: func() http.Header {
 				h := http.Header{}

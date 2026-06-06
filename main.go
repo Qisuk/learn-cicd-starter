@@ -5,6 +5,7 @@ import (
 	"embed"
 	"io"
 	"log"
+	"log/slog"
 	"net/http"
 	"os"
 
@@ -89,10 +90,11 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + port,
-		Handler: router,
+		Addr:              ":" + port,
+		Handler:           router,
+		ReadHeaderTimeout: 5 * 1000000000, // 5 seconds
 	}
 
-	log.Printf("Serving on port: %s\n", port)
+	slog.Info("serving", "port", port)
 	log.Fatal(srv.ListenAndServe())
 }
