@@ -17,6 +17,6 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "1.26.0"
-
+es
       - name: Run Go tests
-        run: go test ./...
+        run: go test ./... -cover
