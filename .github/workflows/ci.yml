@@ -20,9 +20,12 @@ jobs:
 
       - name: Run Go fmt
         run: test -z $(go fmt ./...)
-        
+
       - name: Install Staticcheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Run Staticcheck
+        run: staticcheck ./...
   tests:
     name: Tests
     runs-on: ubuntu-latest
