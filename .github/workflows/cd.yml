@@ -30,7 +30,7 @@ jobs:
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
       
-      - name 'build and submit to gcr'
+      - name: 'build and submit to gcr'
         run: |
           gcloud builds submit --tag us-central1-docker.pkg.dev/notely-498618/notely-ar-repo/notely:TAG .
 
