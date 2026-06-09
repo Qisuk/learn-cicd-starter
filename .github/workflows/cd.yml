@@ -18,6 +18,22 @@ jobs:
 
       - name: Build the application
         run: scripts/buildprod.sh
-        
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v3'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+      
+      - name: 'gcloud builds submit'
+        run: |
+          gcloud builds submit --tag us-central1-docker.pkg.dev/notely-498618/notely-ar-repo/notely:TAG .
+
+
 
       # Add deployment steps here, e.g., using scp, rsync, or a deployment action for your hosting provider.
