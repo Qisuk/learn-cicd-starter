@@ -23,7 +23,7 @@ jobs:
         run: scripts/buildprod.sh
       
       - name: run migrations
-        run: scripts/migrate.sh
+        run: scripts/migrateup.sh
 
       - id: 'auth'
         uses: 'google-github-actions/auth@v2'
